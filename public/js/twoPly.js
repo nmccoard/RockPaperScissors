@@ -163,16 +163,18 @@ function handleUnknownCode() {
    DC.gameBoard_div.classList.remove('hidden');
    DC.gameResult_div.classList.add("hidden");
    document.querySelectorAll('.startScreen')[0].classList.add('hidden');
-   DC.timeMessage_p.innerHTML = "Rock"
+   setTimeout( () => {
+      DC.timeMessage_p.innerHTML = "Rock"
+   }, 500);
    setTimeout( () => {
       DC.timeMessage_p.innerHTML = "Paper";
-   }, 900);
+   }, 1400);
    setTimeout( () => {
       DC.timeMessage_p.innerHTML = "Scissors";
-   }, 1700);
+   }, 2200);
    setTimeout( () => {
       DC.timeMessage_p.innerHTML = "Shoot!";
-   }, 2500)
+   }, 3000)
    setTimeout( () => {
       DC.gameBoard_div.classList.add("hidden");
       // need to let the server know we are ready for the results
@@ -181,7 +183,7 @@ function handleUnknownCode() {
       DC.userScore_span.innerHTML = userScore;
       DC.opponentScore_span.innerHTML = opponentScore;
       DC.gameResult_div.classList.remove("hidden");
-   }, 3300);
+   }, 3900);
 }
 
 function matchEnded(gameData){

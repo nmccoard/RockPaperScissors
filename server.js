@@ -30,7 +30,6 @@ io.on('connection', (client) => {
   console.log('Client connected');
   client.on('disconnect', () => {
     const user = userLeaves(client.id);
-    console.log(`${user.username} disconnected`);
   });
 
   client.on('choiceMade', (choice) => {
