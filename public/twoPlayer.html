@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="author" content="Nate McCoard">
+   <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+   <link rel="stylesheet" href="style.css">
+
+   <title>Rock, Paper, Scissors PvP</title>
+</head>
+
+<body>
+   <div class="content">
+      <header>
+         <h1>Rock - Paper - Scissors <span id="notClassic">- Lizard - Spock</span></h1>
+         <h2><span id="titleName1">You</span> vs. <span id="titleName2">Them</span></h2>
+      </header>
+
+      <div id="switchMode">
+         <button onclick="window.location.href='./'">Back</button>
+      </div>
+
+      <div id="switchDiv">
+         <h2>Game Code:</h2>
+         <p id="codeMessage">Wait...</p>
+      </div>
+
+      <div class="scoreBoard hidden">
+         <div class="badge" id="userLabel">Player 1</div>
+         <div class="badge" id="opponentLabel">Player 2</div>
+         <span id="userScore">0</span> : <span id="opponentScore">0</span>
+      </div>
+
+      <div class="startScreen">
+         <div id="startGame">
+            <h2><span id="startMessage">"Waiting for opponent...</span></h2>
+            <br> <br>
+            <button id="startGameBtn">Ready!</button>
+         </div>
+      </div>
+
+      <div id="gameResults" class="hidden">
+         <div class="result">
+            <p>Results go here</p>
+         </div>
+         <div id="playAgain">
+            <button id="playAgainBtn">Ready!</button>
+         </div>
+      </div>
+
+      <div id="gameBoard">
+         <div class="timeMessage">
+            <p></p>
+         </div>
+         <div class="choices">
+            <div class="choice" id="rock">
+               <img src="images/icon-rock.svg" alt="rock">
+            </div>
+            <div class="choice" id="paper">
+               <img src="images/icon-paper.svg" alt="paper">
+            </div>
+            <div class="choice" id="scissors">
+               <img src="images/icon-scissors.svg" alt="scissors">
+            </div>
+            <div class="choice" id="lizard">
+               <img src="images/icon-lizard.svg" alt="lizard">
+            </div>
+            <div class="choice" id="spock">
+               <img src="images/icon-spock.svg" alt="spock">
+            </div>
+         </div>
+         <p id="actionPrompt" class="hidden">Make your move</p>
+      </div>
+   </div>
+
+   <footer>
+      Built Explicitly for BYU-Idaho WDD 330 - by Nate McCoard
+   </footer>
+
+   <script src="/socket.io/socket.io.js"></script>
+   <script type="module" src="js/twoPly.js"></script>
+</body>
+
+</html>

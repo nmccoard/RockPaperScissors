@@ -21,7 +21,7 @@ header {
    padding: 20px;
 }
 
-header > h1 {
+header > h1, header > h2{
    color: #24272E;
    text-align: center;
 }
@@ -37,11 +37,26 @@ header > h1 {
    font-size: 14px;
 }
 
-#classicTag {
+#switchMode {
+   padding: 10px 30px;
+   float: left;
+   text-align: center;
+}
+
+#switchMode h4 {
+   padding: 5px 0px;
+   font-size: 14px;
+}
+
+#switchDiv h2, #switchDiv p {
+   color:#EFEFEF;
+}
+
+#classicTag, #twoPlayer {
    color: #efefef2a;
 }
 
-#epicTag {
+#epicTag, #singlePlay {
    color: #EFEFEF;
 }
 
@@ -100,11 +115,78 @@ header > h1 {
    padding: 15px 20px;
    width: 50%;
    color: #EFEFEF;
-   font-size: 44px;
    text-align: center;
  }
 
- #startGameBtn {
+ .startScreen h1 {
+    font-size: 42px;
+    margin-top: 20px;
+ }
+
+ .inputForm {
+    width: 75%;
+    position: relative;
+    height: 50px;
+    margin: 5px auto 20px auto;
+    overflow: hidden;
+ }
+
+ .inputForm input {
+    background-color: #24272E;
+    font-size: 18px;
+    width: 100%;
+    height: 100%;
+    color: #EFEFEF;
+    padding-top: 20px;
+    border: none;
+    outline: none;
+ }
+
+ .inputForm label {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    color: #EFEFEF;
+    border-bottom: 1px solid #EFEFEF;
+ }
+
+ .inputForm label::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    bottom: -1px;
+    height: 100%;
+    width: 100%;
+    border-bottom: 3px solid #5fa8d3;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+ }
+
+ .content-name {
+    position: absolute;
+    bottom: 5px;
+    left: 0px;
+    transition: all 0.3s ease;
+ }
+
+ .inputForm input:focus + .label-name .content-name,
+ .inputForm input:valid + .label-name .content-name {
+   transform: translateY(-150%);
+   font-size: 14px;
+   color: #5fa8d3;
+ }
+
+ .inputForm input:focus + .label-name::after,
+ .inputForm input:valid + .label-name::after {
+    transform: translateX(0%);
+ }
+
+
+
+button {
    padding: 10px 20px;
    font-size: 24px;
    font-weight: 600;
@@ -195,8 +277,13 @@ header > h1 {
 }
 
 .choice:hover {
+   transform: scale(1.3);
+   background-color: #5fa8d3;
+}
+
+.selected {
    transform: scale(1.2);
-   background-color: #24728a;
+   background-color: #548533;
 }
 
 #actionPrompt {

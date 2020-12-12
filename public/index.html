@@ -8,7 +8,7 @@
    <link rel="shortcut icon" type="image/x-icon" href="../public/images/favicon.ico">
    <link rel="stylesheet" href="style.css">
 
-   <title>Rock, Paper, Scissors, Lizard, Spock</title>
+   <title>Rock, Paper, Scissors</title>
 </head>
 
 <body>
@@ -17,68 +17,67 @@
          <h1>Rock - Paper - Scissors <span id="notClassic">- Lizard - Spock</span></h1>
       </header>
 
+      <div id="switchMode">
+         <h4 id="singlePlay">Single Palyer</h4>
+         <label class="switch" id="switch1">
+            <input type="checkbox">
+            <span class="slider"></span>
+         </label>
+         <h4 id="twoPlayer">Player vs Player</h4>
+      </div>
+
       <div id="switchDiv">
          <h4 id="epicTag">Sam Kass Version</h4>
-         <label class="switch">
+         <label class="switch" id="switch2">
             <input type="checkbox">
             <span class="slider"></span>
          </label>
          <h4 id="classicTag">Classic Mode</h4>
       </div>
 
+      <div class="choices">
+         <div class="choice" id="rock">
+            <img src="images/icon-rock.svg" alt="rock">
+         </div>
+         <div class="choice" id="paper">
+            <img src="images/icon-paper.svg" alt="paper">
+         </div>
+         <div class="choice" id="scissors">
+            <img src="images/icon-scissors.svg" alt="scissors">
+         </div>
+         <div class="choice" id="lizard">
+            <img src="images/icon-lizard.svg" alt="lizard">
+         </div>
+         <div class="choice" id="spock">
+            <img src="images/icon-spock.svg" alt="spock">
+         </div>
+      </div>
+
       <div class="startScreen">
-         <div id="startGame">
-            Lets get this party started!
-            <br> <br>
-            <button id="startGameBtn">Lets do This!</button>
+         <div class="inputForm" id="nameField">
+            <input type="text" name="name" autocomplete="off" required>
+            <label for="name" class="label-name">
+               <span class="content-name">Name:</span>
+            </label>
          </div>
+         <button id="startGameBtn">Start Game!</button>
+         <button id="newVsGameBtn" class="hidden">Create New Game</button>
+         <h1 class="hidden">- OR -</h1>
+         <div class="inputForm hidden" id="gameCode">
+            <input type="text" name="gameCode" autocomplete="off" required>
+            <label for="gameCode" class="label-name">
+               <span class="content-name">Game Code:</span>
+            </label>
+         </div>
+         <button id="joinVsGameBtn" class="hidden">Join Game</button>
       </div>
 
-      <div class="scoreBoard hidden">
-         <div class="badge" id="userLabel">Nate</div>
-         <div class="badge" id="opponentLabel">Comp</div>
-         <span id="userScore">0</span> : <span id="opponentScore">0</span>
-      </div>
-
-      <div id="gameResults" class="hidden">
-         <div class="result">
-            <p>Results go here</p>
-         </div>
-         <div id="playAgain">
-            <button id="playAgainBtn">Go Again?</button>
-         </div>
-      </div>
-
-      <div id="gameBoard">
-         <div class="timeMessage">
-            <p></p>
-         </div>
-         <div class="choices">
-            <div class="choice" id="rock">
-               <img src="images/icon-rock.svg" alt="rock">
-            </div>
-            <div class="choice" id="paper">
-               <img src="images/icon-paper.svg" alt="paper">
-            </div>
-            <div class="choice" id="scissors">
-               <img src="images/icon-scissors.svg" alt="scissors">
-            </div>
-            <div class="choice" id="lizard">
-               <img src="images/icon-lizard.svg" alt="lizard">
-            </div>
-            <div class="choice" id="spock">
-               <img src="images/icon-spock.svg" alt="spock">
-            </div>
-         </div>
-         <p id="actionPrompt" class="hidden">Make your move</p>
-      </div>
    </div>
 
    <footer>
       Built Explicitly for BYU-Idaho WDD 330 - by Nate McCoard
    </footer>
-
-   <script src="js/app.js"></script>
+   <script type="module" src="js/home.js"></script>
 </body>
 
 </html>
