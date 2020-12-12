@@ -2,8 +2,16 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io');
-const { userJoin, getCurrentUser, userLeaves, getRoomUsers } = require('./serverHelp/users.js');
-const { makeID, checkSelection } = require('./serverHelp/utils.js');
+const {
+  userJoin,
+  getCurrentUser,
+  userLeaves,
+  getRoomUsers
+} = require('./serverHelp/users.js');
+const {
+  makeID,
+  checkSelection
+} = require('./serverHelp/utils.js');
 
 const PORT = process.env.PORT || 3030;
 
@@ -34,20 +42,18 @@ io.on('connection', (client) => {
   });
 
   // Creat a new room
-  client.on('newGame', ({userName, mode}) => {
-      let roomName = makeID(6);
-      client.emit('gameCode', roomName);
-      const user = userJoin(client.id, userName, roomName, 1, mode);
-      client.join(user.room);
-      client.emit('init', 1);
+  client.on('newGame', ({ playerName, mode }) => {
+    console.log(playerName);
+    let roomName = makeID(6);
+    client.emit('gameCode', roomName);
+    const user = userJoin(client.id, playerName, roomName, 1, mode);
+    client.join(user.room);
+    console.log(user);
+    client.emit('init', 1);
   });
 
   // Join Room
-  client.on('joinGame', ({
-    playerName,
-    gameCode
-  }) => {
-
+  client.on('joinGame', ({ playerName, gameCode }) => {
     // Check to see if the rooms is a valid room
     if (getRoomUsers(gameCode).length === 0) {
       client.emit('unknownCode');
