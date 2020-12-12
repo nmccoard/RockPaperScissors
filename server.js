@@ -94,7 +94,7 @@ function startGameInterval(room, gameData) {
       io.to(room).emit('matchEnded', gameData);
       gameData[0].selection = "Potato";
       gameData[1].selection = "Potato";
-    }, 4000);
+    }, 4200);
   } else {
     if (gameData[0].score >= 3) {
       emitGameOver(room, gameData[0].username);
