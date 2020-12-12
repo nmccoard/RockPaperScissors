@@ -58,7 +58,7 @@ function gameBoardListeners(){
    DC.scissors_div.addEventListener('click', () => {
       removeSelected();
       DC.scissors_div.classList.add('selected');
-      socket.emit('choiceMade', 'scissors')
+      socket.emit('choiceMade', 'Scissors')
    });
    DC.lizard_div.addEventListener('click', () => {
       removeSelected();
@@ -165,16 +165,16 @@ function handleUnknownCode() {
    document.querySelectorAll('.startScreen')[0].classList.add('hidden');
    setTimeout( () => {
       DC.timeMessage_p.innerHTML = "Rock"
-   }, 500);
+   }, 400);
    setTimeout( () => {
       DC.timeMessage_p.innerHTML = "Paper";
-   }, 1400);
+   }, 1300);
    setTimeout( () => {
       DC.timeMessage_p.innerHTML = "Scissors";
    }, 2200);
    setTimeout( () => {
       DC.timeMessage_p.innerHTML = "Shoot!";
-   }, 3000)
+   }, 3100)
    setTimeout( () => {
       DC.gameBoard_div.classList.add("hidden");
       // need to let the server know we are ready for the results
@@ -183,7 +183,7 @@ function handleUnknownCode() {
       DC.userScore_span.innerHTML = userScore;
       DC.opponentScore_span.innerHTML = opponentScore;
       DC.gameResult_div.classList.remove("hidden");
-   }, 3900);
+   }, 3800);
 }
 
 function matchEnded(gameData){
