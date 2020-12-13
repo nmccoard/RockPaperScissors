@@ -88,7 +88,7 @@ io.on('connection', (client) => {
 });
 
 function startGameInterval(room, gameData) {
-  if (gameData[0].sore < 3 || gameData[1].score < 3) {
+  if (gameData[0].sore < 3 && gameData[1].score < 3) {
     io.to(room).emit('startMatch');
     setTimeout(() => {
       io.to(room).emit('matchEnded', gameData);
