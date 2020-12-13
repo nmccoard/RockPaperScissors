@@ -2,7 +2,7 @@
 * IMPORTS
 ****************************/
 import { removeSelected, match } from './utils.js';
-import * as DC from './domConst.js'
+import * as DC from './domConst.js';
 
 /****************************
  * Session variables
@@ -18,6 +18,7 @@ let playerNum = 0;
 let userScore = 0;
 let opponentScore = 0;
 let resultMessage = "";
+let gameWon = false;
 
 /*****************************
 * SocketIO stuff
@@ -77,7 +78,6 @@ function gameBoardListeners(){
  ******************************************/
 function onLoad(){
    setGameBoardMode();
-   console.log(name);
    if(code === "new"){
       socket.emit('newGame', { 
          playerName: name,
@@ -105,7 +105,6 @@ function setGameBoardMode(){
 }
 
 function handleInit(number){
-   console.log(`Player number is ${number}`);
    DC.titleName1_span.innerHTML = name;
    playerNum = number;
    if(number === 1){
@@ -136,8 +135,9 @@ function handleUnknownCode() {
 
  function handleReady(data){
    document.querySelectorAll('.startScreen')[0].classList.add('hidden');
+   DC.gameBoard_div.classList.add('hidden');
    DC.gameResult_div.classList.remove("hidden");
-   DC.result_p.innerHTML = "Tell me when you're ready..."
+   DC.result_p.innerHTML = "Tell me when you're ready...";
    mode = data[0].mode;
    setGameBoardMode();
    if(playerNum === 1){
@@ -196,8 +196,8 @@ function matchEnded(gameData){
       ply1 = gameData[1];
       ply2 = gameData[0]
    }
-   console.log(`ply1: ${ply1.selection} ply2: ${ply2.selection}`);
 
+   if(!gameWon){
    const outcome = match(ply1.selection, ply2.selection);
    DC.result_p.innerHTML = outcome.message;
    if(outcome.result === 1){
@@ -210,10 +210,13 @@ function matchEnded(gameData){
    DC.opponentScore_span.innerHTML = opponentScore;
    DC.gameResult_div.classList.remove("hidden");
    DC.playBtn.classList.remove("hidden");
+}
 } 
 
 function handleGameOver(message) {
+   gameWon = true;
    DC.gameResult_div.classList.add('hidden');
+   DC.gameBoard_div.classList.add('hidden');
    document.querySelectorAll('.startScreen')[0].classList.remove('hidden');
    DC.startBtn.classList.remove('hidden');
    DC.startMessage_span.innerHTML = message ;

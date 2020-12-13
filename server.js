@@ -30,6 +30,7 @@ io.on('connection', (client) => {
   console.log('Client connected');
   client.on('disconnect', () => {
     const user = userLeaves(client.id);
+    io.to(user.room).emit('gameOver', `You Win! The other player ran away.`);
   });
 
   client.on('choiceMade', (choice) => {
@@ -42,12 +43,10 @@ io.on('connection', (client) => {
 
   // Creat a new room
   client.on('newGame', ({ playerName, mode }) => {
-    console.log(playerName);
     let roomName = makeID(6);
     client.emit('gameCode', roomName);
     const user = userJoin(client.id, playerName, roomName, 1, mode);
     client.join(user.room);
-    console.log(user);
     client.emit('init', 1);
   });
 
@@ -88,7 +87,9 @@ io.on('connection', (client) => {
 });
 
 function startGameInterval(room, gameData) {
-  if (gameData[0].sore < 3 && gameData[1].score < 3) {
+  console.log(gameData[0].score);
+  console.log(gameData[1].score);
+  if (gameData[0].score < 3 && gameData[1].score < 3) {
     io.to(room).emit('startMatch');
     setTimeout(() => {
       io.to(room).emit('matchEnded', gameData);

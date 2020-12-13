@@ -6,7 +6,7 @@ import {
    removeSelected,
    match
 } from './utils.js';
-import * as DC from './domConst.js'
+import * as DC from './domConst.js';
 
 /**********************************
  * Game Variables
