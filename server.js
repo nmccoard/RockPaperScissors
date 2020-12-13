@@ -74,7 +74,7 @@ io.on('connection', (client) => {
   client.on('ready', (score) => {
     const user = getCurrentUser(client.id);
     user.ready++;
-    user.score = score;
+    user.score = parseInt(score);
     let userList = getRoomUsers(user.room);
     if (userList[0].ready === userList[1].ready) {
       startGameInterval(user.room, userList);
